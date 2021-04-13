@@ -8,8 +8,8 @@ This repository is separated into two main directories; namely ```database``` an
 In its raw format, the bike data consists of just six attributes related to bike and station availability, station identifiers, time data, whether a station is currently in use and so on. Two key attributes that need to be generated will be referred to from here on as ```count_1``` and ```count_2```. In order to generate these attributes and to properly merge the bike data with the weather data later on, it is going to be necessary to generate some additional support attributes.<br>
 &ensp;1. Remove any rows related to stations that are not currently in use.<br>
 &ensp;2. Generate the support attribute ```dd-mm-yy```.<br>
-&ensp;3. Generate a city indicator attribute: 2 - Cork, 3 - Limerick, 4 - Galway.<br>
-&ensp;4. Generate a bikes available citywide attribute that represents the total number of bikes available within each city for all recorded moments.<br>
+&ensp;3. Generate a city indicator attribute ```city_id```: 2 - Cork, 3 - Limerick, 4 - Galway.<br>
+&ensp;4. Generate a ```bikes_available_citywide``` attribute that represents the total number of bikes available within each city for all recorded moments.<br>
 &ensp;5. Generate a count attribute named ```count_1``` that cumulatively tracks bike usage at each station across every day.
 &ensp;6. Generate a count attribute named ```count_2``` that displays the total bike usage at each city across every day.
 

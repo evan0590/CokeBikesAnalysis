@@ -36,7 +36,7 @@ print("\tWeather dataframe contains", f'{len(weather_df.index):,}', "rows.")
 # Remove inactive stations.
 #
 # documentation here:
-# <insert reference to the coke bikes api>
+# https://data.gov.ie/dataset/coca-cola-zero-bikes
 print("Removing inactive stations from bikes dataframe...")
 bike_df = bike_df.loc[bike_df['status'] == 0]
 
@@ -61,8 +61,8 @@ stations_data = [(bike_df, station, day) for day in bike_df['dd_mm_yy'].unique()
 city_data = [(bike_df, city, day) for day in bike_df['dd_mm_yy'].unique() for city in bike_df['city_id'].unique()]
 
 # Generate a bikes available citywide attribute
-# calculate the total number of bike available in each city per dt (time entry)
 #
+# calculate the total number of bike available in each city per dt (time entry)
 print("Generating a bikes available citywide attribute...")
 bike_df['bikes_available_citywide'] = 0
 ba_citywide_output = pool_process(func=calculate_available_bikes_citywide, data=city_data, pool_size=8)
@@ -88,6 +88,8 @@ for dictionary in count_2_output:
     bike_df.loc[[*dictionary], 'count_2'] = list(dictionary.values())
 
 # Save the dataframes with the changes amended
+#
+#
 print("Saving the dataframes with the changes amended...")
 bike_df.to_csv('./output/bike_task1.csv')
 weather_df.to_csv('./output/weather_task1.csv')
